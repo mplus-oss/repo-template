@@ -1,0 +1,34 @@
+[MASTER]
+load-plugins=pylint.extensions.docstyle, pylint.extensions.mccabe
+score=n
+
+
+[FORMAT]
+max-line-length=119
+
+
+[MESSAGES CONTROL]
+disable=all
+enable=anomalous-backslash-in-string,
+    assignment-from-none,
+    dangerous-default-value,
+    duplicate-key,
+    eval-used,
+    pointless-statement,
+    pointless-string-statement,
+    redundant-keyword-arg,
+    reimported,
+    return-in-init,
+    too-few-format-args,
+    unreachable,
+    trailing-whitespace,
+    deprecated-module,
+    # -- Optional --
+    redefined-builtin,
+    too-complex,
+
+
+[REPORTS]
+msg-template={path}:{line}: [{msg_id}({symbol}), {obj}] {msg}
+output-format=colorized
+reports=no

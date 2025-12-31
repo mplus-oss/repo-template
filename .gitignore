@@ -1,6 +1,16 @@
+# Credentials
+.env
+*.env
+
 # Code Editor
 .vimsession
 .vscode
 
 # Repo Test
 test_repo*/*
+
+# Language tooling that should be ignored
+.venv
+venv
+node_modules
+.ruff_cache

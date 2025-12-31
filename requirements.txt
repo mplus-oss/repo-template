@@ -1,0 +1,7 @@
+# Tooling
+copier==9.11.0
+
+# Linter purposes
+ruff==0.14.10
+pylint==4.0.4
+#pylint-odoo==9.3.22
