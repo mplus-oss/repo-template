@@ -1,0 +1,31 @@
+_subdirectory: src
+_min_copier_version: "9"
+
+_tasks:
+  - python3 hooks/check_deps.py
+  - python3 hooks/flatten.py
+  - python3 hooks/cleanup.py
+
+langs:
+  type: str
+  help: Choose the language that you want to use in the project
+  multiselect: true
+  choices:
+    Python: python
+
+
+# For python langs configuration
+python_target_version:
+  when: "{{ 'python' in langs }}"
+  type: str
+  help: 'Python: Set the python target version'
+  default: py310
+
+python_base_app:
+  when: "{{ 'python' in langs }}"
+  type: str
+  help: 'Python: What app did you want to build?'
+  choices:
+    "Base Python App": base
+    "Odoo Modules (>= 16.0)": odoo-new
+    "Odoo Modules (<= 15.0)": odoo-old
