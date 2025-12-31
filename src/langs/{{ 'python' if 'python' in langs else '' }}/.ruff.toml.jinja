@@ -1,0 +1,48 @@
+target-version = "{{ python_target_version }}"
+fix = true
+
+[lint]
+extend-select = [
+    "B",
+    "C90",
+    "E501",  # line too long (default 88)
+    "I",  # isort
+    "UP",  # pyupgrade
+    "W291", # trailing-whitespace
+]
+extend-safe-fixes = ["UP008"]
+exclude = ["setup/*"]
+
+[format]
+exclude = ["setup/*"]
+
+{% if python_base_app.startswith('odoo-') -%}
+[lint.per-file-ignores]
+"__init__.py" = ["F401", "I001"]  # ignore unused and unsorted imports in __init__.py
+"__manifest__.py" = ["B018"]  # useless expression
+{% endif -%}
+
+[lint.isort]
+section-order = [
+  "future",
+  "standard-library",
+  "third-party",
+  {% if python_base_app.startswith('odoo-') -%}
+  "odoo",
+  "odoo-addons",
+  {% endif -%}
+  "first-party",
+  "local-folder"
+]
+
+[lint.isort.sections]
+{% if python_base_app.startswith('odoo-') -%}
+"odoo" = ["odoo"]
+"odoo-addons" = ["odoo.addons"]
+{%- endif %}
+
+[lint.mccabe]
+max-complexity = 16
+
+[lint.pycodestyle]
+max-line-length = 119
