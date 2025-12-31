@@ -1,0 +1,6 @@
+# Code Editor
+.vimsession
+.vscode
+
+# Repo Test
+test_repo*/*
