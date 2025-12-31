@@ -5,6 +5,15 @@ _tasks:
   - python3 hooks/check_deps.py
   - python3 hooks/flatten.py
   - python3 hooks/cleanup.py
+  - git init -q
+
+project_name:
+  type: str
+  help: Set the project name
+
+project_description:
+  type: str
+  help: Set the project description
 
 langs:
   type: str

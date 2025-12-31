@@ -14,3 +14,4 @@ test_repo*/*
 venv
 node_modules
 .ruff_cache
+__pycache__

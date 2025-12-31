@@ -6,3 +6,6 @@ pre-commit
 ruff
 pylint
 pylint-odoo
+
+# Testing
+pytest
