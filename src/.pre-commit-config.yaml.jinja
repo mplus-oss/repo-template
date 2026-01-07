@@ -6,7 +6,6 @@ repos:
       - id: end-of-file-fixer
       - id: check-yaml
       - id: check-added-large-files
-
   {%- if 'js' in langs -%}
   - repo: local
     hooks:
@@ -17,24 +16,23 @@ repos:
         types: [text]
         files: "\\.(jsx?|tsx?|c(js|ts)|m(js|ts)|d\\.(ts|cts|mts)|jsonc?|css|svelte|vue|astro|graphql|gql)$"
         require_serial: true
-  {% endif %}
-
-  {%- if 'python' in langs -%}
+  {%- endif %}
+  {% if 'python' in langs -%}
   - repo: local
     hooks:
       - id: ruff-check
-        name: ruff-check
-        entry: ruff check --force-exclude
+        name: 'ruff: Check formatter'
+        entry: ruff
         language: python
         types_or: [python, pyi, jupyter]
-        args: []
+        args: [check, --force-exclude]
         require_serial: true
       - id: ruff-format
-        name: ruff-format
-        entry: ruff format --force-exclude
+        name: 'ruff: Format repo'
+        entry: ruff
         language: python
         types_or: [python, pyi, jupyter]
-        args: []
+        args: [format, --force-exclude]
         require_serial: true
   - repo: local
     hooks:
@@ -44,4 +42,4 @@ repos:
         language: system
         types: [python]
         require_serial: true
-  {% endif %}
+  {%- endif -%}
