@@ -9,11 +9,10 @@ max-line-length=119
 
 {% if python_base_app.startswith('odoo-') -%}
 [ODOOLINT]
-readme-template-url="https://github.com/OCA/maintainer-tools/blob/master/template/module/README.rst"
-manifest-required-authors=Odoo Community Association (OCA)
-manifest-required-keys=license
-manifest-deprecated-keys=description,active
-license-allowed=AGPL-3,GPL-2,GPL-2 or any later version,GPL-3,GPL-3 or any later version,LGPL-3
+manifest-required-authors={{ odoo_authors }}
+manifest-required-keys=name,version,license,summary,depends
+manifest-deprecated-keys=active
+license-allowed=GPL-2,GPL-2 or any later version,GPL-3,GPL-3 or any later version,AGPL-3,LGPL-3,Other OSI approved licence,OEEL-1,OPL-1,Other proprietary
 valid-odoo-versions=19.0
 
 
@@ -81,7 +80,6 @@ enable=anomalous-backslash-in-string,
     manifest-behind-migrations,
     manifest-data-duplicated,
     missing-odoo-file,
-    missing-readme,
     no-raise-unlink,
     no-search-all,
     no-wizard-in-models,

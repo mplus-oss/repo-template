@@ -16,10 +16,10 @@ exclude = ["setup/*"]
 [format]
 exclude = ["setup/*"]
 
-{% if python_base_app.startswith('odoo-') -%}
 [lint.per-file-ignores]
-"__init__.py" = ["F401", "I001"]  # ignore unused and unsorted imports in __init__.py
-"__manifest__.py" = ["B018"]  # useless expression
+"**/__init__.py" = ["F401", "I001"] # Ignore unsorted and unused imports
+{% if python_base_app.startswith('odoo-') -%}
+"**/__manifest__.py" = ["B018"] # Ignore useless expression
 {% endif -%}
 
 [lint.isort]
