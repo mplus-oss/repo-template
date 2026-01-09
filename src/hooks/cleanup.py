@@ -2,10 +2,12 @@ import os
 import shutil
 
 REMOVED_PATH = [
-    "langs",
+    "base_app",
     "hooks",
+    "templates",
     ".copier-answers.yml",
 ]
+
 
 def cleanup():
     for pathstr in REMOVED_PATH:
