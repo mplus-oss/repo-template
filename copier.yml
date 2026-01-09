@@ -2,7 +2,6 @@ _subdirectory: src
 _min_copier_version: "9"
 
 _tasks:
-  - python3 hooks/check_deps.py
   - python3 hooks/flatten.py
   - python3 hooks/cleanup.py
   - git init -q
@@ -15,26 +14,32 @@ project_description:
   type: str
   help: Set the project description
 
-langs:
+base_app:
   type: str
-  help: Choose the language that you want to use in the project
+  help: Set the tech stack for the project
   multiselect: true
   choices:
-    Python: python
+    "Base Python App": python
+    "Odoo Modules": odoo
 
-
-# For python langs configuration
+# ---------------------
+# Python Configurations
 python_target_version:
-  when: "{{ 'python' in langs }}"
   type: str
-  help: 'Python: Set the python target version'
-  default: py310
+  when: "{{ base_app | select('in', ['python', 'odoo']) | list | length > 0 }}"
+  help: "Python: Set the target Python version"
+  default: "3.10"
 
-python_base_app:
-  when: "{{ 'python' in langs }}"
+# -------------------
+# Odoo Configurations
+odoo_author:
   type: str
-  help: 'Python: What app did you want to build?'
-  choices:
-    "Base Python App": base
-    "Odoo Modules (>= 16.0)": odoo-new
-    "Odoo Modules (<= 15.0)": odoo-old
+  when: "{{ 'odoo' in base_app }}"
+  help: "Odoo: Set the author name for Odoo modules"
+  default: Mplus Software
+
+odoo_version:
+  type: int
+  when: "{{ 'odoo' in base_app }}"
+  help: "Odoo: Set the Odoo version (without point)"
+  default: 19
