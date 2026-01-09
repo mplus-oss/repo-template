@@ -1,0 +1,20 @@
+{% extends 'src/templates/.ruff.toml.jinja' %}
+
+{% block per_file_ignores %}
+"**/__manifest__.py" = ["B018"] # Ignore useless expression
+{%- endblock %}
+
+{% block isort_section_order %}
+    "future",
+    "standard-library",
+    "third-party",
+    "odoo",
+    "odoo-addons",
+    "first-party",
+    "local-folder"
+{%- endblock %}
+
+{% block isort_sections -%}
+"odoo" = ["odoo"]
+"odoo-addons" = ["odoo.addons"]
+{% endblock %}
