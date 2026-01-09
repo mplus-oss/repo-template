@@ -21,6 +21,7 @@ base_app:
   choices:
     "Base Python App": python
     "Odoo Modules": odoo
+    "Jinja2 Templates": jinja2
 
 # ---------------------
 # Python Configurations

@@ -1,6 +1,7 @@
 # Tooling
 copier
 pre-commit
+j2lint
 
 # Linter purposes
 ruff
