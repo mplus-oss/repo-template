@@ -1,0 +1,5 @@
+{% if 'node' in js_runtime %}
+node = "{{ js_nodejs_version }}"
+{% elif 'bun' in js_runtime %}
+bun = "{{ js_bun_version }}"
+{%- endif %}

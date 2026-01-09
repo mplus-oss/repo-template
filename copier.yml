@@ -20,8 +20,39 @@ base_app:
   multiselect: true
   choices:
     "Base Python App": python
+    "JavaScript/TypeScript": js
     "Odoo Modules": odoo
     "Jinja2 Templates": jinja2
+
+# -------------------------
+# JavaScript Configurations
+js_runtime:
+  type: str
+  when: "{{ base_app | select('in', ['js']) | list | length > 0 }}"
+  help: "JavaScript: Set the JavaScript runtime"
+  default: node
+  multiselect: true
+  choices:
+    "Node.js": node
+    "Bun": bun
+    "Browser": browser
+
+_js_prototools:
+  type: bool
+  when: "{{ 'browser' in js_runtime | not }}"
+  default: true
+
+js_nodejs_version:
+  type: str
+  when: "{{ 'node' in js_runtime }}"
+  help: "JavaScript: Set the Node.js version"
+  default: "24.12.0"
+
+js_bun_version:
+  type: str
+  when: "{{ 'bun' in js_runtime }}"
+  help: "JavaScript: Set the Bun version"
+  default: "1.3.5"
 
 # ---------------------
 # Python Configurations
