@@ -1,7 +1,0 @@
-# Tooling
-pre-commit
-
-# Linter purposes
-ruff
-pylint
-pylint-odoo
