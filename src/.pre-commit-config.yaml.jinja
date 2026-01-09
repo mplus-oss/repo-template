@@ -21,14 +21,14 @@ repos:
   - repo: local
     hooks:
       - id: ruff-check
-        name: 'ruff: Check formatter'
+        name: "ruff: Check formatter"
         entry: ruff
         language: python
         types_or: [python, pyi, jupyter]
         args: [check, --force-exclude]
         require_serial: true
       - id: ruff-format
-        name: 'ruff: Format repo'
+        name: "ruff: Format repo"
         entry: ruff
         language: python
         types_or: [python, pyi, jupyter]
@@ -37,9 +37,26 @@ repos:
   - repo: local
     hooks:
       - id: pylint
-        name: pylint
+        name: "pylint: Python linter"
         entry: pylint
-        language: system
+        language: python
         types: [python]
+        require_serial: true
+  {%- endif -%}
+  {% if 'jinja2' in base_app %}
+  - repo: local
+    hooks:
+      - id: j2lint-check
+        name: "j2lint: Check formatter"
+        entry: j2lint
+        language: python
+        files: \.(j2|jinja2|jinja)$
+        args:
+          - --extensions
+          - j2,jinja2,jinja
+          - --ignore
+          - jinja-statements-delimiter
+          - single-statement-per-line
+          - --
         require_serial: true
   {%- endif -%}
