@@ -1,0 +1,49 @@
+target-version = "{{ python_target_version }}"
+fix = true
+
+[lint]
+extend-select = [
+    "B",
+    "C90",
+    "E501",  # line too long (default 88)
+    "I",  # isort
+    "UP",  # pyupgrade
+    "W291", # trailing-whitespace
+]
+extend-safe-fixes = ["UP008"]
+exclude = ["setup/*"]
+
+[format]
+exclude = ["setup/*"]
+
+[lint.per-file-ignores]
+"**/__init__.py" = ["F401", "I001"] # Ignore unsorted and unused imports
+{%- block per_file_ignores -%}
+{%- endblock %}
+
+[lint.isort]
+section-order = [
+    {%- block isort_section_order %}
+    "future",
+    "standard-library",
+    "third-party",
+    "first-party",
+    "local-folder"
+    {%- endblock %}
+]
+
+{%- set isort_custom_sections -%}
+{%- block isort_sections -%}{%- endblock -%}
+{%- endset -%}
+
+{%- if isort_custom_sections | trim %}
+
+[lint.isort.sections]
+{{ isort_custom_sections | trim }}
+{%- endif %}
+
+[lint.mccabe]
+max-complexity = 16
+
+[lint.pycodestyle]
+max-line-length = 119
