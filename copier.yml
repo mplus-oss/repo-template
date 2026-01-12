@@ -60,7 +60,7 @@ python_target_version:
   type: str
   when: "{{ base_app | select('in', ['python', 'odoo']) | list | length > 0 }}"
   help: "Python: Set the target Python version"
-  default: "3.10"
+  default: "3.12"
 
 # -------------------
 # Odoo Configurations
