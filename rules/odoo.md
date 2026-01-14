@@ -7,9 +7,6 @@ This rules inspired from OCA, PEP8, and Odoo best practices.
 > [!NOTE]
 > Since Odoo is built on Python, this document serves as an extension of the [Python Rules](./python.md). All rules defined there also apply to Odoo projects unless explicitly overridden.
 
-> [!NOTE]
-> Since Odoo is built on Python, this document serves as an extension of the [Python Rules](./python.md). All rules defined there also apply to Odoo projects unless explicitly overridden.
-
 ## Versioning
 The project uses a configurable Python version (defaulting to 3.12). The project must have a `.python-version` file with format `major.minor`, for example:
 ```
