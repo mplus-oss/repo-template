@@ -4,8 +4,6 @@ repos:
     hooks:
       - id: trailing-whitespace
         name: "pre-commit: Check trailing whitespace"
-      - id: end-of-file-fixer
-        name: "pre-commit: Check end line on the file"
       - id: check-yaml
         name: "pre-commit: Verify YAML syntax"
       - id: check-added-large-files

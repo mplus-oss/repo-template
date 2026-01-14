@@ -25,3 +25,4 @@ copier copy gh:mplus-oss/repo-template path/to/destination
 ```
 
 (C) 2026 - M+ Software - All rights reserved.
+
