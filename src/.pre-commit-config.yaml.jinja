@@ -8,17 +8,24 @@ repos:
         name: "pre-commit: Verify YAML syntax"
       - id: check-added-large-files
         name: "pre-commit: Check added large file"
-  {%- if base_app | select('in', ['js', 'odoo']) | list | length > 0  -%}
+  {% if base_app | select('in', ['js', 'odoo']) | list | length > 0  %}
   - repo: local
     hooks:
-      - id: biome-lint
-        name: biome-lint
-        entry: npx biome lint --write --files-ignore-unknown=true --no-errors-on-unmatched
-        language: javascript
+      - id: biome-format
+        name: "biome: Format"
+        entry: npx @biomejs/biome format --write --files-ignore-unknown=true --no-errors-on-unmatched
+        language: system
         types: [text]
         files: "\\.(jsx?|tsx?|c(js|ts)|m(js|ts)|d\\.(ts|cts|mts)|jsonc?|css|svelte|vue|astro|graphql|gql)$"
         require_serial: true
-  {%- endif %}
+      - id: biome-lint
+        name: "biome: Lint"
+        entry: npx @biomejs/biome lint --write --files-ignore-unknown=true --no-errors-on-unmatched
+        language: system
+        types: [text]
+        files: "\\.(jsx?|tsx?|c(js|ts)|m(js|ts)|d\\.(ts|cts|mts)|jsonc?|css|svelte|vue|astro|graphql|gql)$"
+        require_serial: true
+  {%- endif -%}
   {% if base_app | select('in', ['python', 'odoo']) | list | length > 0 %}
   - repo: local
     hooks:
