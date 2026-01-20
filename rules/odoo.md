@@ -281,6 +281,18 @@ Use self-closing elements when possible.
 <div className="foo" />
 ```
 
+#### `style/useConst`
+Require `const` declarations for variables that are only assigned once.
+```javascript
+// Bad
+let abcd = 1234;
+console.log(abcd);
+
+// Good
+const abcd = 1234;
+console.log(abcd);
+```
+
 #### `complexity/useLiteralKeys`
 Use dot notation for literal keys.
 ```javascript
@@ -289,6 +301,24 @@ obj["key"]
 
 // Good
 obj.key
+```
+
+#### `complexity/noArguments` (Warning)
+Try to reduce the use of keyword `arguments`.
+```javascript
+// Warning
+init() {
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments
+    this._super(...arguments);
+    this.orm = this.bindService("orm");
+}
+
+// Good
+init(...args) {
+  // Spread the arguments based on the function
+  this._super(..args);
+  this.orm = this.bindService("orm");
+}
 ```
 
 #### `suspicious/noAssignInExpressions`
@@ -310,5 +340,20 @@ Disallow unused variables.
 ```javascript
 // Bad
 const x = 1; // x is never used
+```
+
+#### `correctness/noUnusedFunctionParameters` (Off)
+Allow unused parameters to maintain explicit visibility of the parent function's signature.
+```javascript
+    // `params` not used. This function overrided from
+    // SnippetOptionWidget._computeWidgetState(methodName: string, params: any[]): Promise<string | undefined> | string | undefined
+    _computeWidgetState: function (methodName, params) {
+        switch (methodName) {
+            case "setSelectedEvents": {
+                return this.$target[0].dataset.recordData || "";
+            }
+        }
+        return this._super(...arguments);
+    }
 ```
 
