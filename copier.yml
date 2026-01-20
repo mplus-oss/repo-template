@@ -30,7 +30,7 @@ js_runtime:
   type: str
   when: "{{ base_app | select('in', ['js']) | list | length > 0 }}"
   help: "JavaScript: Set the JavaScript runtime"
-  default: node
+  default: [node]
   multiselect: true
   choices:
     "Node.js": node
@@ -44,7 +44,7 @@ _js_prototools:
 
 js_nodejs_version:
   type: str
-  when: "{{ 'node' in js_runtime }}"
+  when: "{{ 'js' in base_app and 'node' in js_runtime }}"
   help: "JavaScript: Set the Node.js version"
   default: "24.12.0"
 
