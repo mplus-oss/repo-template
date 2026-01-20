@@ -315,9 +315,9 @@ init() {
 
 // Good
 init(...args) {
-  // Spread the arguments based on the function
-  this._super(..args);
-  this.orm = this.bindService("orm");
+    // Spread the arguments based on the function
+    this._super(..args);
+    this.orm = this.bindService("orm");
 }
 ```
 
