@@ -345,15 +345,15 @@ const x = 1; // x is never used
 #### `correctness/noUnusedFunctionParameters` (Off)
 Allow unused parameters to maintain explicit visibility of the parent function's signature.
 ```javascript
-    // `params` not used. This function overrided from
-    // SnippetOptionWidget._computeWidgetState(methodName: string, params: any[]): Promise<string | undefined> | string | undefined
-    _computeWidgetState: function (methodName, params) {
-        switch (methodName) {
-            case "setSelectedEvents": {
-                return this.$target[0].dataset.recordData || "";
-            }
+// `params` not used. This function overrided from
+// SnippetOptionWidget._computeWidgetState(methodName: string, params: any[]): Promise<string | undefined> | string | undefined
+_computeWidgetState: function (methodName, params) {
+    switch (methodName) {
+        case "setSelectedEvents": {
+            return this.$target[0].dataset.recordData || "";
         }
-        return this._super(...arguments);
     }
+    return this._super(...arguments);
+}
 ```
 
