@@ -304,18 +304,18 @@ obj.key
 ```
 
 #### `complexity/noArguments` (Warning)
-Try to reduce the use of keyword `arguments`.
+Try to prefer [spreading the function arguments](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax) over using the keyword [`arguments`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments).
 ```javascript
-// Warning
+// Bad
 init() {
-    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments
+    // Spread the implicit 'arguments' object into the parent initializer.
     this._super(...arguments);
     this.orm = this.bindService("orm");
 }
 
 // Good
 init(...args) {
-    // Spread the arguments based on the function
+    // Use the spread operator to pass all arguments to the superclass.
     this._super(..args);
     this.orm = this.bindService("orm");
 }
