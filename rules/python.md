@@ -46,13 +46,6 @@ def complex_function(x):
     # ... (lots of nested ifs)
 ```
 
-#### `E501`
-Line too long (limit: 119 characters).
-```python
-# Bad
-my_extremely_long_variable_name = "This is a very long string that will definitely exceed the configured line length limit of 119 characters."
-```
-
 #### `I` (isort)
 Sorts imports.
 ```python
