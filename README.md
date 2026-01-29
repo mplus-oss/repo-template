@@ -3,7 +3,7 @@ A versatile [Copier](https://copier.readthedocs.io/en/stable/) template for boot
 
 ## Features
 - Base Python App
-  - Tools: Ruff, Pylint, Pre-commit
+  - Tools: Ruff, Pylint
 - JavaScript/TypeScript
   - Tools: Biome
 - Odoo Modules
@@ -12,17 +12,16 @@ A versatile [Copier](https://copier.readthedocs.io/en/stable/) template for boot
   - Tools: j2lint
 
 ## Prerequisites
-Before using this template, ensure you have Copier installed.
+Before using this template, ensure you have Copier and pre-commit installed.
 ```bash
 pipx install copier
+pipx install pre-commit
 ```
+or, use another tools such as `uv`, `conda`, or any-else.
 
 ## Usage
 ### Generate a New Project
 To create a new project using this template, run:
 ```bash
-copier copy gh:mplus-oss/repo-template path/to/destination
+copier copy --trust gh:mplus-oss/repo-template path/to/destination
 ```
-
-(C) 2026 - M+ Software - All rights reserved.
-
